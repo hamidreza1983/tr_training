@@ -33,7 +33,15 @@ class contact(models.Model):
     def __str__(self):
         return self.name
 
+class cheap_package(models.Model):
+    city = models.CharField(max_length=255)
+    price = models.CharField(max_length=255)
+    created_date = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ['-created_date']
 
+    def __str__(self):
+        return self.city
 
 
 

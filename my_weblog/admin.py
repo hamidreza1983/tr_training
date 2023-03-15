@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import post, contact
+from .models import post, contact, cheap_package
 
 
 
@@ -19,3 +19,10 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('id','name', 'email', 'subject', 'created_date')
     search_fields = ('subject', )
     list_filter = ('email', )
+
+@admin.register(cheap_package)
+class CheapAdmin(admin.ModelAdmin):
+    date_hierarchy = 'created_date'
+    list_display = ['city', 'price','created_date']
+    search_fields = ('city', )
+    list_filter = ('price', )
