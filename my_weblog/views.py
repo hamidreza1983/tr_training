@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import cheap_package, luxary_package, camping_package, post
+from django.utils import timezone
 
 
 
@@ -21,7 +22,7 @@ def contact(req):
     return render(req,'my_weblog/contact.html')
 
 def b_home(req):
-    posts=post.objects.filter(status=1)
+    posts=post.objects.filter(published_date__lte=timezone.now())
     context = {
         'posts':posts
     }
@@ -29,6 +30,7 @@ def b_home(req):
     return render(req,'my_weblog/blog-home.html',context=context)
 
 def b_single(req):
+    
     return render(req,'my_weblog/blog-single.html')
 
 def test(req,pid):
