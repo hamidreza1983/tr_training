@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% for post in posts %}
 <section class="banner-area relative blog-home-banner" id="home">
 	<div class="overlay overlay-bg"></div>
 	<div class="container">
@@ -13,7 +14,7 @@
 				<p class="text-white">
 					There is a moment in the life of any aspiring astronomer that it is time to buy that first
 				</p>
-				<a href="{% url 'my_weblog:blog-single' %}" class="primary-btn">View More</a>
+				<a href="{% url 'my_weblog:blog-single' pid=post.id %}" class="primary-btn">View More</a>
 			</div>
 		</div>
 	</div>
@@ -112,13 +113,13 @@
 						<div class="feature-img">
 							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
 						</div>
-						<a class="posts-title" href="{% url 'my_weblog:blog-single' %}">
+						<a class="posts-title" href="{% url 'my_weblog:blog-single' pid=post.id %}">
 							<h3>{{post.title}}</h3>
 						</a>
 						<p class="excert">
 							{{post.content}}
 						</p>
-						<a href="{% url 'my_weblog:blog-single' %}" class="primary-btn">View More</a>
+						<a href="{% url 'my_weblog:blog-single' pid=post.id %}" class="primary-btn">View More</a>
 					</div>
 				</div>
 				{% endfor %}
@@ -183,7 +184,7 @@
 									<img class="img-fluid" src="{% static 'img/blog/pp1.jpg' %}" alt="">
 								</div>
 								<div class="details">
-									<a href="{% url 'my_weblog:blog-single' %}">
+									<a href="{% url 'my_weblog:blog-single' pid=post.id %}">
 										<h6>Space The Final Frontier</h6>
 									</a>
 									<p>02 Hours ago</p>
@@ -194,7 +195,7 @@
 									<img class="img-fluid" src="{% static 'img/blog/pp2.jpg' %}" alt="">
 								</div>
 								<div class="details">
-									<a href="{% url 'my_weblog:blog-single' %}">
+									<a href="{% url 'my_weblog:blog-single' pid=post.id %}">
 										<h6>The Amazing Hubble</h6>
 									</a>
 									<p>02 Hours ago</p>
@@ -205,7 +206,7 @@
 									<img class="img-fluid" src="{% static 'img/blog/pp3.jpg' %}" alt="">
 								</div>
 								<div class="details">
-									<a href="{% url 'my_weblog:blog-single' %}">
+									<a href="{% url 'my_weblog:blog-single' pid=post.id %}">
 										<h6>Astronomy Or Astrology</h6>
 									</a>
 									<p>02 Hours ago</p>
@@ -216,7 +217,7 @@
 									<img class="img-fluid" src="{% static 'img/blog/pp4.jpg' %}" alt="">
 								</div>
 								<div class="details">
-									<a href="{% url 'my_weblog:blog-single' %}">
+									<a href="{% url 'my_weblog:blog-single' pid=post.id %}">
 										<h6>Asteroids telescope</h6>
 									</a>
 									<p>02 Hours ago</p>
@@ -320,4 +321,6 @@
 		</div>
 	</div>
 </section>
+
+{% endfor %}
 {% endblock %}

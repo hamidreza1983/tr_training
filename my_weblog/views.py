@@ -29,16 +29,17 @@ def b_home(req):
 
     return render(req,'my_weblog/blog-home.html',context=context)
 
-def b_single(req):
-    
-    return render(req,'my_weblog/blog-single.html')
-
-def test(req,pid):
-    #posts = post.objects.get(id=pid)
-    posts = get_object_or_404(post, pk=pid)#>>>>>> posts = post.objects.get(id=pid)
+def b_single(req, pid):
+    posts=get_object_or_404(post, pk=pid, status= 1)
+    posts.counted_viwes += 1
+    posts.save()
     context = {
-        'post':posts.content
+        'post':posts
     }
-    return render(req,'my_weblog/test.html',context=context)
+    return render(req,'my_weblog/blog-single.html',context=context)
+
+
+def blog_2(req):
+    return 'hello'
 
 
