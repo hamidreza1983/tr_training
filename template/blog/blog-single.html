@@ -10,8 +10,8 @@
 					{{posts.title}}
 				</h1>
 				<p class="text-white link-nav"><a href="{% url 'my_weblog:home' %}">Home </a> <span
-						class="lnr lnr-arrow-right"></span><a href="{% url 'my_weblog:blog-home' %}">Blog </a> <span
-						class="lnr lnr-arrow-right"></span> <a href="{% url 'my_weblog:blog-single' pid=post.id %}"> {{post.title}}</a></p>
+						class="lnr lnr-arrow-right"></span><a href="{% url 'blog:blog-home' %}">Blog </a> <span
+						class="lnr lnr-arrow-right"></span> <a href="{% url 'blog:blog-single' pid=post.id %}"> {{post.title}}</a></p>
 			</div>
 		</div>
 	</div>
@@ -265,7 +265,7 @@
 									<img class="img-fluid" src="{% static 'img/blog/pp1.jpg' %}" alt="">
 								</div>
 								<div class="details">
-									<a href="{% url 'my_weblog:blog-single' 'pid=posts.id' %}">
+									<a href="{% url 'blog:blog-single' pid=post.id %}">
 										<h6>Space The Final Frontier</h6>
 									</a>
 									<p>02 Hours ago</p>
@@ -276,7 +276,7 @@
 									<img class="img-fluid" src="{% static 'img/blog/pp2.jpg' %}" alt="">
 								</div>
 								<div class="details">
-									<a href="{% url 'my_weblog:blog-single' pid=post.id %}">
+									<a href="{% url 'blog:blog-single' pid=post.id %}">
 										<h6>The Amazing Hubble</h6>
 									</a>
 									<p>02 Hours ago</p>
@@ -287,7 +287,7 @@
 									<img class="img-fluid" src="{% static 'img/blog/pp3.jpg' %}" alt="">
 								</div>
 								<div class="details">
-									<a href="{% url 'my_weblog:blog-single' pid=post.id %}">
+									<a href="{% url 'blog:blog-single' pid=post.id %}">
 										<h6>Astronomy Or Astrology</h6>
 									</a>
 									<p>02 Hours ago</p>
@@ -298,7 +298,7 @@
 									<img class="img-fluid" src="{% static 'img/blog/pp4.jpg' %}" alt="">
 								</div>
 								<div class="details">
-									<a href="{% url 'my_weblog:blog-single' pid=post.id %}">
+									<a href="{% url 'blog:blog-single' pid=post.id %}">
 										<h6>Asteroids telescope</h6>
 									</a>
 									<p>02 Hours ago</p>

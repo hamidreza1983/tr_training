@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('my_weblog.urls')),
+    path('blog/', include('blog.urls')),
 ]
 # add media root folder and static root folder to urls requets path
 urlpatterns += static(settings.STATIC_URL ,document_root=settings.STATIC_ROOT)
