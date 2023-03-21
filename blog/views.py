@@ -12,7 +12,7 @@ def b_home(req):
     return render(req,'blog/blog-home.html',context=context)
 
 def b_single(req, pid):
-    posts=get_object_or_404(post, pk=pid, status= True)
+    posts=get_object_or_404(post, pk=pid)
     posts.counted_viwes += 1
     posts.save()
     context = {
