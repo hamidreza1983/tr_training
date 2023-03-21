@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import post
 
 
 
 def b_home(req):
-    posts=post.objects.filter(status=True)
+    posts=post.objects.filter(status=1)
     context = {
         'posts':posts
     }
