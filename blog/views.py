@@ -9,15 +9,14 @@ def b_home(req):
         'posts':posts
     }
 
-    return render(req,'blog/blog-home.html',context=context)
+    return render(req,'blog/blog-home.html', context=context)
 
 def b_single(req, pid):
-    posts=get_object_or_404(post, pk=pid)
+    posts=get_object_or_404(post, pk=pid, status=1)
     posts.counted_viwes += 1
     posts.save()
     context = {
         'post':posts
     }
-    return render(req,'blog/blog-single.html',context=context)
+    return render(req,'blog/blog-single.html', context=context)
 
-# Create your views here.
