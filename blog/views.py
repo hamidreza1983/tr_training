@@ -17,14 +17,14 @@ def b_single(req, pid):
     posts.counted_viwes += 1
     posts.save()
     if pid == len(total):
-        prev = posts.get_object_or_404(post, pk=pid-1, status=1)
+        prev = get_object_or_404(post, pk=pid-1, status=1)
         next = None
     elif pid == 1 :
         prev = None
-        next = posts.get_object_or_404(post, pk=pid+1, status=1)
+        next = get_object_or_404(post, pk=pid+1, status=1)
     else:
-        prev = posts.get_object_or_404(post, pk=pid-1, status=1)
-        next = posts.get_object_or_404(post, pk=pid+1, status=1)
+        prev = get_object_or_404(post, pk=pid-1, status=1)
+        next = get_object_or_404(post, pk=pid+1, status=1)
 
     context = {
         'post' : posts,
