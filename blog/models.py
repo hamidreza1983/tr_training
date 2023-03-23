@@ -25,3 +25,6 @@ class post(models.Model):
         ordering = ['-created_date']
     def __str__(self):
         return self.title
+
+    def snipets(self):
+        return self.content[:20] + '...'

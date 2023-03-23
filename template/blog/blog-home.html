@@ -89,7 +89,13 @@
 							<div class="single-post row">
 								<div class="col-lg-3  col-md-3 meta-details">
 									<ul class="tags">
-									{{post.category.all|join:", "}}
+										{% for cat in post.category.all %}
+											{% if not forloop.last %}
+												<li><a href="#">{{cat.name}}**</a></li>
+											{% else %}
+												<li><a href="#">{{cat.name}}</a></li>
+											{% endif %}
+										{% endfor %}
 									</ul>
 									<div class="user-details row">
 										<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.first_name}}</a> <span class="lnr lnr-user"></span></p>
@@ -104,7 +110,8 @@
 									</div>
 									<a class="posts-title" href="{% url 'blog:blog-single' pid=post.id %}"><h3>{{post.title}}</h3></a>
 									<p class="excert">
-										{{post.content}}
+										{{post.content|truncatewords:2}}
+										<!-- {{post.snipets}} -->
 									</p>
 									<a href="{% url 'blog:blog-single' pid=post.id %}" class="primary-btn">View More</a>
 								</div>
