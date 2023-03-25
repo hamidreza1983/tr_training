@@ -3,12 +3,13 @@ from .models import post
 
 
 
-def b_home(req):
+def b_home(req, cat=None):
     posts=post.objects.filter(status=1)
+    if cat:
+        posts = posts.filter(category__name=cat)
     context = {
         'posts':posts
     }
-
     return render(req,'blog/blog-home.html', context=context)
 
 def b_single(req, pid):

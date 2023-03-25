@@ -6,5 +6,6 @@ from .views import b_home, b_single
 app_name = 'blog'
 urlpatterns = [
     path('', b_home, name= 'blog-home'),
-    path('<int:pid>', b_single, name='blog-single' )
+    path('<int:pid>', b_single, name='blog-single' ),
+    path('category/<str:cat>', b_home, name='blog-home' ),
 ]
