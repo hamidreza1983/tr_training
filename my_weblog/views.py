@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import cheap_package, luxary_package, camping_package
 from django.utils import timezone
+from .models import contact
 
 
 
@@ -18,13 +19,22 @@ def home(req):
 def about(req):
     return render(req,'my_weblog/about.html')
 
-def contact(req):
+def Contact(req):
     return render(req,'my_weblog/contact.html')
 
 
 
 
-def blog_2(req):
-    return 'hello'
+def contact_us(req):
+    con = contact()
+    if req.method == "POST":
+       print('post')
+       con.name = req.POST.get('name')
+       con.email = req.POST.get('email')
+       con.subject = req.POST.get('subject')
+       con.text = req.POST.get('message')
+       con.save()
+    
+    
 
 

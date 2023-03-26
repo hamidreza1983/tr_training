@@ -1,12 +1,26 @@
 from django.shortcuts import render, get_object_or_404
 from .models import post
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-
-def b_home(req, cat=None):
-    posts=post.objects.filter(status=1)
+def b_home(req, cat=None, username=None):
+    posts = post.objects.filter(status=1)
+    
     if cat:
         posts = posts.filter(category__name=cat)
+    
+    if username:
+        posts = posts.filter(author__username=username)
+    
+    posts = Paginator(posts,3)
+    try :
+        page_number = req.GET.get('page')
+        posts = posts.get_page(page_number)
+    except PageNotAnInteger:
+        posts = posts.get_page(1)
+    except EmptyPage:
+        posts = posts.get_page(1)
+   
     context = {
         'posts':posts
     }
@@ -34,3 +48,11 @@ def b_single(req, pid):
     }
     return render(req,'blog/blog-single.html', context=context)
 
+def search(request):
+    posts = post.objects.filter(status=1)
+    if key := request.GET.get('search'):
+        posts = posts.filter(content__contains=key)
+    context = {
+        'posts':posts
+    }
+    return render(request, 'blog/blog-home.html', context=context)
