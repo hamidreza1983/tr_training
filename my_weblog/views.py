@@ -1,11 +1,15 @@
-from django.shortcuts import render, get_object_or_404
-from .models import cheap_package, luxary_package, camping_package
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import cheap_package, luxary_package, camping_package, newsletter
 from django.utils import timezone
 from .models import contact
 
 
 
 def home(req):
+    if req.method == 'POST':
+        news=newsletter()
+        news.email = req.POST.get('emailaddress')
+        news.save()
     cheap = cheap_package.objects.all()
     luxary= luxary_package.objects.all()
     camp= camping_package.objects.all()
@@ -34,7 +38,3 @@ def contact_us(req):
        con.subject = req.POST.get('subject')
        con.text = req.POST.get('message')
        con.save()
-    
-    
-
-
