@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'my_weblog.apps.MyWeblogConfig', #  << >> create new app
+    'django.contrib.humanize',
+    'django_extensions',
     'blog.apps.BlogConfig',
 ]
 
