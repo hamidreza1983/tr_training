@@ -39,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'my_weblog.apps.MyWeblogConfig', #  << >> create new app
     'django.contrib.humanize',
-    'django_extensions',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'blog.apps.BlogConfig',
+
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
