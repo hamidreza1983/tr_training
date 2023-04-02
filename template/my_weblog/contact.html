@@ -54,7 +54,7 @@
 				</div>
 			</div>
 			<div class="col-lg-8">
-				<form class="form-area contact-form text-right" action="{% url 'my_weblog:contact' %}" method="post">
+				<form  action="{% url 'my_weblog:contact' %}" method="post">
 					{% csrf_token %}
 					<div class="row">
 						<div class="col-lg-6 form-group">
@@ -69,7 +69,9 @@
 
 							<input name="subject" placeholder="Enter subject" onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'Enter subject'" class="common-input mb-20 form-control"
-								required="" type="text">
+							    type="text">
+								
+
 						</div> 
 						<div class="col-lg-6 form-group">
 							<textarea class="common-textarea form-control" name="text" placeholder="Enter Messege"

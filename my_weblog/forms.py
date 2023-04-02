@@ -9,7 +9,7 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = contact
-        fields = ['name', 'email', 'subject', 'text']
+        fields = ['name', 'email','subject', 'text']
 
 
 class NewsletterForm(forms.ModelForm):
