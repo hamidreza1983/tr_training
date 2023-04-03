@@ -1,7 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import cheap_package, luxary_package, camping_package, newsletter
-from django.utils import timezone
-from .models import contact
 from .forms import ContactForm, NewsletterForm
 from django.contrib import messages
 
