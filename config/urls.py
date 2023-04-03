@@ -20,6 +20,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
+    path('captcha/', include('captcha.urls')),
     path('', include('my_weblog.urls')),
     path('blog/', include('blog.urls')),
 ]

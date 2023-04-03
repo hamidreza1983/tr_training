@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 class category(models.Model):
     name = models.CharField(max_length=255)
@@ -12,7 +13,7 @@ class post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     content = models.TextField()
-    # tag
+    tags = TaggableManager()
     category = models.ManyToManyField(category)
     counted_viwes = models.IntegerField(default = 0)
     status = models.BooleanField(default=False)

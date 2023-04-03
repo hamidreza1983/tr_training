@@ -69,7 +69,7 @@
 
 							<input name="subject" placeholder="Enter subject" onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'Enter subject'" class="common-input mb-20 form-control"
-							    type="text">
+							    required="" type="text">
 								
 
 						</div> 
@@ -82,6 +82,7 @@
 							<div class="alert-msg" style="text-align: left;"></div>
 							<button class="genric-btn primary" style="float: right;">Send Message</button>
 						</div>
+						{{form.captcha}}
 					</div>
 				</form>
 			</div>

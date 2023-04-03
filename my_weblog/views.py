@@ -11,7 +11,8 @@ def home(req):
            messages.add_message(req, messages.SUCCESS, 'thankyou for register')
         else:
             messages.add_message(req, messages.ERROR, 'your email is invalid')
-
+    else:
+        email = NewsletterForm()
     cheap = cheap_package.objects.all()
     luxary= luxary_package.objects.all()
     camp= camping_package.objects.all()
@@ -19,6 +20,7 @@ def home(req):
         'cheap':cheap,
         'lux':luxary,
         'camp':camp,
+        'email':email
     }
     return render(req,'my_weblog/index.html', context=context)
 
@@ -34,4 +36,10 @@ def Contact(req):
             messages.add_message(req, messages.SUCCESS, 'your message received')
         else:
             messages.add_message(req, messages.ERROR, 'your data is not enough')
-    return render(req,'my_weblog/contact.html')
+    else:
+        form = ContactForm()
+
+    context = {
+        'form':form
+    }
+    return render(req, 'my_weblog/contact.html', context=context)

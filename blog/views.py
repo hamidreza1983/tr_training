@@ -3,7 +3,7 @@ from .models import post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-def b_home(req, cat=None, username=None):
+def b_home(req, cat=None, username=None, tag=None):
     posts = post.objects.filter(status=1)
     
     if cat:
@@ -11,6 +11,9 @@ def b_home(req, cat=None, username=None):
     
     if username:
         posts = posts.filter(author__username=username)
+    
+    if tag : 
+        posts = posts.filter(tags__name=tag)
     
     posts = Paginator(posts,3)
     try :
