@@ -11,7 +11,8 @@
 				</h1>
 				<p class="text-white link-nav"><a href="{% url 'my_weblog:home' %}">Home </a> <span
 						class="lnr lnr-arrow-right"></span><a href="{% url 'blog:blog-home' %}">Blog </a> <span
-						class="lnr lnr-arrow-right"></span> <a href="{% url 'blog:blog-single' pid=post.id %}"> {{post.title}}</a></p>
+						class="lnr lnr-arrow-right"></span> <a href="{% url 'blog:blog-single' pid=post.id %}">
+						{{post.title}}</a></p>
 			</div>
 		</div>
 	</div>
@@ -34,10 +35,10 @@
 							{{post.category.all|join:", "}}
 						</ul>
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.username}}</a> <span
-									class="lnr lnr-user"></span></p>
-							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"d M Y"}}</a> <span
-									class="lnr lnr-calendar-full"></span></p>
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.username}}</a>
+								<span class="lnr lnr-user"></span></p>
+							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"d M
+									Y"}}</a> <span class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_viwes}} Views</a> <span
 									class="lnr lnr-eye"></span></p>
 							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span
@@ -68,73 +69,116 @@
 					</div>
 				</div>
 				{% if next and prev %}
-					<div class="navigation-area">
-						<div class="row">
-							{% comment %} < prev> {% endcomment %}
-							<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+				<div class="navigation-area">
+					<div class="row">
+						{% comment %} < prev> {% endcomment %}
+							<div
+								class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 								<div class="thumb">
-									<a href="{% url 'blog:blog-single' pid=prev.id %}"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+									<a href="{% url 'blog:blog-single' pid=prev.id %}"><img class="img-fluid"
+											src="img/blog/prev.jpg" alt=""></a>
 								</div>
 								<div class="arrow">
-									<a href="{% url 'blog:blog-single' pid=prev.id %}"><span class="lnr text-white lnr-arrow-left"></span></a>
+									<a href="{% url 'blog:blog-single' pid=prev.id %}"><span
+											class="lnr text-white lnr-arrow-left"></span></a>
 								</div>
 								<div class="detials">
 									<p>Prev Post</p>
-									<a href="{% url 'blog:blog-single' pid=prev.id %}"><h4>Space The Final Frontier</h4></a>
+									<a href="{% url 'blog:blog-single' pid=prev.id %}">
+										<h4>Space The Final Frontier</h4>
+									</a>
 								</div>
 							</div>
 							{% comment %} < next> {% endcomment %}
-							<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-								<div class="detials">
-									<p>Next Post</p>
-									<a href="{% url 'blog:blog-single' pid=next.id %}"><h4>Telescopes 101</h4></a>
+								<div
+									class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+									<div class="detials">
+										<p>Next Post</p>
+										<a href="{% url 'blog:blog-single' pid=next.id %}">
+											<h4>Telescopes 101</h4>
+										</a>
+									</div>
+									<div class="arrow">
+										<a href="{% url 'blog:blog-single' pid=next.id %}"><span
+												class="lnr text-white lnr-arrow-right"></span></a>
+									</div>
+									<div class="thumb">
+										<a href="{% url 'blog:blog-single' pid=next.id %}"><img class="img-fluid"
+												src="img/blog/next.jpg" alt=""></a>
+									</div>
 								</div>
-								<div class="arrow">
-									<a href="{% url 'blog:blog-single' pid=next.id %}"><span class="lnr text-white lnr-arrow-right"></span></a>
-								</div>
-								<div class="thumb">
-									<a href="{% url 'blog:blog-single' pid=next.id %}"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
-								</div>										
-							</div>									
-						</div>
 					</div>
+				</div>
 				{% elif next %}
-					<div class="navigation-area">
-						<div class="row">
-							{% comment %} < next> {% endcomment %}
-							<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+				<div class="navigation-area">
+					<div class="row">
+						{% comment %} < next> {% endcomment %}
+							<div
+								class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
 								<div class="detials">
 									<p>Next Post</p>
-									<a href="{% url 'blog:blog-single' pid=next.id %}"><h4>Telescopes 101</h4></a>
+									<a href="{% url 'blog:blog-single' pid=next.id %}">
+										<h4>Telescopes 101</h4>
+									</a>
 								</div>
 								<div class="arrow">
-									<a href="{% url 'blog:blog-single' pid=next.id %}"><span class="lnr text-white lnr-arrow-right"></span></a>
+									<a href="{% url 'blog:blog-single' pid=next.id %}"><span
+											class="lnr text-white lnr-arrow-right"></span></a>
 								</div>
 								<div class="thumb">
-									<a href="{% url 'blog:blog-single' pid=next.id %}"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
-								</div>										
-							</div>									
-						</div>
+									<a href="{% url 'blog:blog-single' pid=next.id %}"><img class="img-fluid"
+											src="img/blog/next.jpg" alt=""></a>
+								</div>
+							</div>
 					</div>
+				</div>
 				{% elif prev %}
-					<div class="navigation-area">
-						{% comment %} < prev> {% endcomment %}
+				<div class="navigation-area">
+					{% comment %} < prev> {% endcomment %}
 						<div class="row">
-							<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+							<div
+								class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 								<div class="thumb">
-									<a href="{% url 'blog:blog-single' pid=prev.id %}"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+									<a href="{% url 'blog:blog-single' pid=prev.id %}"><img class="img-fluid"
+											src="img/blog/prev.jpg" alt=""></a>
 								</div>
 								<div class="arrow">
-									<a href="{% url 'blog:blog-single' pid=prev.id %}"><span class="lnr text-white lnr-arrow-left"></span></a>
+									<a href="{% url 'blog:blog-single' pid=prev.id %}"><span
+											class="lnr text-white lnr-arrow-left"></span></a>
 								</div>
 								<div class="detials">
 									<p>Prev Post</p>
-									<a href="{% url 'blog:blog-single' pid=prev.id %}"><h4>Space The Final Frontier</h4></a>
+									<a href="{% url 'blog:blog-single' pid=prev.id %}">
+										<h4>Space The Final Frontier</h4>
+									</a>
 								</div>
-							</div>								
+							</div>
 						</div>
-					</div>
+				</div>
 				{% endif %}
+				<!-- <div class="comments-area">
+					<div id="disqus_thread"></div>
+					<script>
+						/**
+						*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+						*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+						/*
+						var disqus_config = function () {
+						this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+						this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+						*/
+						(function () { // DON'T EDIT BELOW THIS LINE
+							var d = document, s = d.createElement('script');
+							s.src = 'https://127-0-0-1-8000-wnqwiwcrd6.disqus.com/embed.js';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+							powered by Disqus.</a></noscript>
+				</div> -->
+
 				<div class="comments-area">
 					<h4>05 Comments</h4>
 					<div class="comment-list">
