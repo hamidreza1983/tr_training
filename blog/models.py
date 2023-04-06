@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 class category(models.Model):
     name = models.CharField(max_length=255)
@@ -12,7 +13,7 @@ class post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     content = models.TextField()
-    # tag
+    tags = TaggableManager()
     category = models.ManyToManyField(category)
     counted_viwes = models.IntegerField(default = 0)
     status = models.BooleanField(default=False)
@@ -25,3 +26,23 @@ class post(models.Model):
         ordering = ['-created_date']
     def __str__(self):
         return self.title
+
+    def snipets(self):
+        return self.content[:20] + '...'
+
+
+class comment(models.Model):
+    post = models.ForeignKey(post, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    subject = models.CharField(max_length=255)
+    text = models.TextField()
+    status = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+
+        ordering = ['-created_date']
+    def __str__(self):
+        return self.name

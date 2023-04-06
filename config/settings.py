@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,8 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'my_weblog.apps.MyWeblogConfig', #  << >> create new app
+    'django.contrib.humanize',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'taggit',
+    'captcha',
+    'django_summernote', 
     'blog.apps.BlogConfig',
+
 ]
+
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

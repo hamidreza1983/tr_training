@@ -71,9 +71,16 @@
             </div>
         </div>
     </header><!-- #header -->
-{% block content %}
+    {% block content %}
 
-{% endblock %}
+    {% endblock %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
     <footer class="footer-area section-gap">
         <div class="container">
 
@@ -118,18 +125,15 @@
                             For business professionals caught between high OEM price and mediocre print and graphic
                             output.
                         </p>
-                        <div id="mc_embed_signup">
-                            <form target="_blank"
-                                action="{% url 'my_weblog:home' %}"
-                                method="get" class="subscription relative">
+                            <form action="{% url 'my_weblog:home' %}" method="post" class="subscription relative">
+                                {% csrf_token %}
                                 <div class="input-group d-flex flex-row">
-                                    <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                    <button class="btn bb-btn"><span class="lnr lnr-location"></span></button>
-                                </div>
+                                    <input name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                    <button class="btn bb-btn" type="submit"><span class="lnr lnr-location"></span></button>		
+                                </div>									
                                 <div class="mt-10 info"></div>
+                                {{email.captcha}}
                             </form>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3  col-md-6 col-sm-6">
