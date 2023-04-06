@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from .models import post
+from .models import post, comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .forms import CommentForm
 
 
 def b_home(req, cat=None, username=None, tag=None):
@@ -32,6 +33,12 @@ def b_home(req, cat=None, username=None, tag=None):
 def b_single(req, pid):
     total = post.objects.all()
     posts=get_object_or_404(post, pk=pid, status=1)
+    if req.method == "POST":
+        form = CommentForm(req.POST)
+        if form.is_valid():
+            form.save()
+    com = comment.objects.filter(post=posts.id, status=1)
+    form = CommentForm()
     posts.counted_viwes += 1
     posts.save()
     if pid == len(total):
@@ -48,6 +55,8 @@ def b_single(req, pid):
         'post' : posts,
         'next' : next,
         'prev' : prev,
+        'comments' : com,
+        'form' : form,
     }
     return render(req,'blog/blog-single.html', context=context)
 
