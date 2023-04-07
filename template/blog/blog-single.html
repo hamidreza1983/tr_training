@@ -54,7 +54,7 @@
 					<div class="col-lg-9 col-md-9">
 						<h3 class="mt-20 mb-20">{{post.title}}</h3>
 						<p class="excert">
-							{{post.content}}
+							{{post.content|safe}}
 						</p>
 					</div>
 				</div>
@@ -226,50 +226,19 @@
 					<div class="single-sidebar-widget popular-post-widget">
 						<h4 class="popular-title">Popular Posts</h4>
 						<div class="popular-post-list">
+							{% for lpost in last_posts %}
 							<div class="single-post-list d-flex flex-row align-items-center">
 								<div class="thumb">
-									<img class="img-fluid" src="{% static 'img/blog/pp1.jpg' %}" alt="">
+									<img class="img-fluid" src={{lpost.image.url}} alt="">
 								</div>
 								<div class="details">
 									<a href="{% url 'blog:blog-single' pid=post.id %}">
-										<h6>Space The Final Frontier</h6>
+										<h6>{{lpost.title}}</h6>
 									</a>
-									<p>02 Hours ago</p>
+									<p>{{lpost.published_date}}</p>
 								</div>
 							</div>
-							<div class="single-post-list d-flex flex-row align-items-center">
-								<div class="thumb">
-									<img class="img-fluid" src="{% static 'img/blog/pp2.jpg' %}" alt="">
-								</div>
-								<div class="details">
-									<a href="{% url 'blog:blog-single' pid=post.id %}">
-										<h6>The Amazing Hubble</h6>
-									</a>
-									<p>02 Hours ago</p>
-								</div>
-							</div>
-							<div class="single-post-list d-flex flex-row align-items-center">
-								<div class="thumb">
-									<img class="img-fluid" src="{% static 'img/blog/pp3.jpg' %}" alt="">
-								</div>
-								<div class="details">
-									<a href="{% url 'blog:blog-single' pid=post.id %}">
-										<h6>Astronomy Or Astrology</h6>
-									</a>
-									<p>02 Hours ago</p>
-								</div>
-							</div>
-							<div class="single-post-list d-flex flex-row align-items-center">
-								<div class="thumb">
-									<img class="img-fluid" src="{% static 'img/blog/pp4.jpg' %}" alt="">
-								</div>
-								<div class="details">
-									<a href="{% url 'blog:blog-single' pid=post.id %}">
-										<h6>Asteroids telescope</h6>
-									</a>
-									<p>02 Hours ago</p>
-								</div>
-							</div>
+							{% endfor %}
 						</div>
 					</div>
 					<div class="single-sidebar-widget ads-widget">
@@ -278,48 +247,14 @@
 					<div class="single-sidebar-widget post-category-widget">
 						<h4 class="category-title">Post Catgories</h4>
 						<ul class="cat-list">
+							{% for cat in post.category.all %}
 							<li>
 								<a href="#" class="d-flex justify-content-between">
-									<p>Technology</p>
-									<p>37</p>
+									<p>{{cat.name}}</p>
 								</a>
+
 							</li>
-							<li>
-								<a href="#" class="d-flex justify-content-between">
-									<p>Lifestyle</p>
-									<p>24</p>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="d-flex justify-content-between">
-									<p>Fashion</p>
-									<p>59</p>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="d-flex justify-content-between">
-									<p>Art</p>
-									<p>29</p>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="d-flex justify-content-between">
-									<p>Food</p>
-									<p>15</p>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="d-flex justify-content-between">
-									<p>Architecture</p>
-									<p>09</p>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="d-flex justify-content-between">
-									<p>Adventure</p>
-									<p>44</p>
-								</a>
-							</li>
+							{% endfor %}
 						</ul>
 					</div>
 					<div class="single-sidebar-widget tag-cloud-widget">

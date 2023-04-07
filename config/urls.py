@@ -24,6 +24,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('', include('my_weblog.urls')),
     path('blog/', include('blog.urls')),
+    path('login/', include('login.urls')),
 ]
 # add media root folder and static root folder to urls requets path
 urlpatterns += static(settings.STATIC_URL ,document_root=settings.STATIC_ROOT)

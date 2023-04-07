@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'captcha',
     'django_summernote', 
     'blog.apps.BlogConfig',
+    'login.apps.LoginConfig',
 
 ]
 
