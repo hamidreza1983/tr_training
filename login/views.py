@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from blog.models import post
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -12,7 +12,6 @@ def Login(req):
                 user = form.cleaned_data.get('username')
                 password = form.cleaned_data.get('password')
                 user = authenticate(req,username=user,password=password)
-                print(user)
                 if user is not None:
                     login(req,user)
                     return redirect('/blog')
@@ -28,5 +27,14 @@ def Login(req):
     else:
         redirect(req,'/')
     
+def Logout(req):
+    if req.user.is_authenticated:
+        logout(req)
+    return redirect('/')
 
+
+def Signup(req):
+    if req.user.is_authenticated:
+        logout(req)
+    return redirect('/')
     
