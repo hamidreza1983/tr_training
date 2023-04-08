@@ -12,8 +12,16 @@
 </head>
 
 <body>
-    <div class="alert alert-primary d-flex justify-content-center" role="alert" al>
-            <h1>Login</h1>
+    <div class='text-center'>
+        <form method="post" action="{% url 'login:login' %}" class="form-signin">
+            {% csrf_token %}
+            <h1 class="h3 mb-3">Please Login</h1>
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% for message in messages %}
+            <h1 class="h5 mb-3">{{message}}</h1> 
+        {% endfor %}
     </div>
 
 

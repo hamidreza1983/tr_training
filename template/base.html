@@ -66,7 +66,11 @@
                         <li><a href="{% url 'my_weblog:about' %}">About</a></li>
                         <li><a href="{% url 'blog:blog-home' %}">Blog</a></li>
                         <li><a href="{% url 'my_weblog:contact' %}">Contact</a></li>
-                        <li><a href={% url 'login:login' %}>Login/Signup</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href='#'>{{user.username}}</a></li>
+                        {% else %}
+                            <li><a href="{% url 'login:login' %}">Login/Signup</a></li>
+                        {% endif %}
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
