@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import post, comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import CommentForm
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def b_home(req, cat=None, username=None, tag=None):
     posts = post.objects.filter(status=1)
     
