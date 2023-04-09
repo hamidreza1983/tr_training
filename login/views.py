@@ -45,3 +45,4 @@ def Signup(req):
             'form' : form
         }
         return render(req, 'login/signup.html',context=context)
+    return redirect('/')

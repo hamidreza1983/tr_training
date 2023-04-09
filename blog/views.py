@@ -4,7 +4,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 
-@login_required
 def b_home(req, cat=None, username=None, tag=None):
     posts = post.objects.filter(status=1)
     
