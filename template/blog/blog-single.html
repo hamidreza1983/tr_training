@@ -197,7 +197,7 @@
 					<form method="post">
 						{% csrf_token %}
 						<input type="hidden" value={{post.id}} name="post">
-						{% if user.is_authenticated %}
+						{% if request.user.is_authenticated %}
 							<input type="hidden" value={{request.user.username}} name="name"> 
 							<input type="hidden" value={{request.user.email}} name="email">
 						{% else %}

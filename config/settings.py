@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     'django_summernote', 
     'blog.apps.BlogConfig',
     'login.apps.LoginConfig',
-
 ]
 
 MULTI_CAPTCHA_ADMIN = {

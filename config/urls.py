@@ -14,18 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path ,include
+from django.urls import path ,include, re_path
 from django.conf.urls.static import static 
 from django.conf import settings
+from .views import maintenance
+
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('summernote/', include('django_summernote.urls')),
-    path('captcha/', include('captcha.urls')),
-    path('', include('my_weblog.urls')),
-    path('blog/', include('blog.urls')),
-    path('login/', include('login.urls')),
-]
-# add media root folder and static root folder to urls requets path
+        path('admin/', admin.site.urls),
+        path('summernote/', include('django_summernote.urls')),
+        path('captcha/', include('captcha.urls')),
+        path('', include('my_weblog.urls')),
+        path('blog/', include('blog.urls')),
+        path('login/', include('login.urls')),
+
+    ]
 urlpatterns += static(settings.STATIC_URL ,document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL ,document_root=settings.MEDIA_ROOT)
+
+if settings.MAINTENANCE_MODE:
+    urlpatterns.insert(0, re_path(r'^', maintenance, name='maintenance'))
+
