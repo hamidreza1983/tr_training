@@ -15,16 +15,5 @@ class UserCreationForm(UserCreationForm):
         model = User
         fields = ("username", "email", "password1", "password2")#
 
-#class AuthenticationForm(AuthenticationForm):
-#    email = forms.EmailField(required=False)
-#    class Meta:
-#        model = User
-#        fields = ("email", "password")
 
-class EmailLoginForm(forms.ModelForm):
-    email = forms.EmailField(required=True)
-    password = forms.CharField(max_length=20)
-    class Meta:
-        model = User
-        fields = ('email', 'password')
         
