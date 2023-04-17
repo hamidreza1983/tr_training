@@ -6,9 +6,9 @@ SITE_ID = 1
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'learningpy',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'NAME': 'learnin2_learningpy',
+        'USER': 'learnin2_hamid',
+        'PASSWORD': 'H@midreza62',
         'HOST': 'localhost',
         'PORT': '3306',
     }

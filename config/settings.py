@@ -34,7 +34,10 @@ INSTALLED_APPS = [
     'django_summernote', 
     'blog.apps.BlogConfig',
     'login.apps.LoginConfig',
+    'crispy_bootstrap4',
+    'crispy_forms',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
