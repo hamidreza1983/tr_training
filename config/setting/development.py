@@ -15,14 +15,11 @@ SITE_ID = 1
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'learningpy',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 STATIC_ROOT = BASE_DIR.joinpath('/static')
 MEDIA_ROOT = BASE_DIR.joinpath('media')
@@ -38,3 +35,5 @@ STATICFILES_FINDERS = [
 ]
 
 MAINTENANCE_MODE = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
