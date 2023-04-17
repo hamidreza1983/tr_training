@@ -31,8 +31,9 @@
                 </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'login:password-reset' %}">forgot password ?</a>
         </form>
-        <a href="{% url 'login:password-reset' %}">forgot password ?</a>
+        
         {% for message in messages %}
             <h1 class="h5 mb-3">{{message}}</h1> 
         {% endfor %}

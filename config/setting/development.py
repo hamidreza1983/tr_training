@@ -36,4 +36,5 @@ STATICFILES_FINDERS = [
 
 MAINTENANCE_MODE = False
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
