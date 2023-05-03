@@ -28,7 +28,10 @@ class post(models.Model):
         return self.title
 
     def snipets(self):
-        return self.content[:20] + '...'
+        return self.content[:10] + '...'
+    
+    def titleedit(self):
+        return self.title.upper()
 
 
 class comment(models.Model):

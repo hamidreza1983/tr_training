@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 def b_home(req, cat=None, username=None, tag=None):
     posts = post.objects.filter(status=1)
+
     
     if cat:
         posts = posts.filter(category__name=cat)
@@ -67,7 +68,8 @@ def b_single(req, pid):
 
 def search(request):
     posts = post.objects.filter(status=1)
-    if key := request.GET.get('search'):
+    if request.GET.get('search') is not None:
+        key = request.GET.get('search')
         posts = posts.filter(content__contains=key)
     context = {
         'posts':posts

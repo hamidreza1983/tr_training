@@ -10,5 +10,5 @@ urlpatterns = [
     path('category/<str:cat>', b_home, name='blog-home' ),
     path('tag/<str:tag>', b_home, name='blog-home' ),
     path('<str:username>', b_home, name='author' ),
-    path('search/', search, name = 'search')
+    path('search/', search, name = 'search'),
 ]
