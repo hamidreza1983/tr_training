@@ -16,6 +16,7 @@ class post(models.Model):
     tags = TaggableManager()
     category = models.ManyToManyField(category)
     counted_viwes = models.IntegerField(default = 0)
+    comment_count = models.IntegerField(default = 0)
     status = models.BooleanField(default=False)
     published_date = models.DateTimeField(null=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -40,7 +41,7 @@ class comment(models.Model):
     email = models.CharField(max_length=255)
     subject = models.CharField(max_length=255)
     text = models.TextField()
-    status = models.BooleanField(default=False)
+    status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     

@@ -7,8 +7,8 @@ app_name = 'blog'
 urlpatterns = [
     path('', b_home, name= 'blog-home'),
     path('<int:pid>/', b_single, name='blog-single' ),
-    path('category/<str:cat>', b_home, name='blog-home' ),
-    path('tag/<str:tag>', b_home, name='blog-home' ),
-    path('<str:username>', b_home, name='author' ),
+    path('category/<str:cat>', b_home, name='blog-home-with-category' ),
+    path('tag/<str:tag>', b_home, name='blog-home-with-tag' ),
+    path('<str:username>', b_home, name='blog-home-with-author' ),
     path('search/', search, name = 'search'),
 ]

@@ -8,7 +8,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ('status', )
     search_fields = ('title', 'author' )
     empty_value_display = '-empty-'
-    fields = ('title', 'content', 'published_date', 'author', 'status', 'image', 'category', 'tags')
+    fields = ('title', 'content', 'published_date', 'author', 'status', 'image', 'category', 'tags', 'comment_count')
     summernote_fields = ('content',)
 class CommentAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date'
