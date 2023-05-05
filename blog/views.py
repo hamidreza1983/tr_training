@@ -4,18 +4,22 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 
-def b_home(req, cat=None, username=None, tag=None):
+
+
+#def b_home(req, cat=None, username=None, tag=None):
+def b_home(req, *args, **kwargs):
     posts = post.objects.filter(status=1)
 
     
-    if cat:
-        posts = posts.filter(category__name=cat)
+    if kwargs.get('cat'):
+        posts = posts.filter(category__name=kwargs['cat'])
+
         
-    if username:
-        posts = posts.filter(author__username=username)
+    if kwargs.get('username'):
+        posts = posts.filter(author__username=kwargs['username'])
     
-    if tag : 
-        posts = posts.filter(tags__name=tag)
+    if kwargs.get('tag'):
+        posts = posts.filter(tags__name=kwargs['tag'])
     
     posts = Paginator(posts,3)
     try :
@@ -31,21 +35,15 @@ def b_home(req, cat=None, username=None, tag=None):
     }
     return render(req,'blog/blog-home.html', context=context)
 
+
+
+
+
+
 def b_single(req, pid):
-
-    if req.method == "POST":
-        form = CommentForm(req.POST)
-        if form.is_valid():
-            form.save()
-            posts = get_object_or_404(post, pk=pid, status=1)
-            posts.save()
-            posts.comment_count += 1
-            posts.save()
-
-            
-    form = CommentForm()
     posts = get_object_or_404(post, pk=pid, status=1)
     com = comment.objects.filter(post=posts.id, status=1)
+    form = CommentForm()
     posts.counted_viwes += 1
     posts.save()
     context = {
@@ -53,6 +51,14 @@ def b_single(req, pid):
         'form' : form,
         'comments' : com,
     }
+
+    if req.method == "POST":
+        form = CommentForm(req.POST)
+        if form.is_valid():
+            form.save()            
+            posts.comment_count += 1
+            posts.save()
+
     return render(req,'blog/blog-single.html', context=context)
 #    total = post.objects.all()
 #    posts=get_object_or_404(post, pk=pid, status=1)
